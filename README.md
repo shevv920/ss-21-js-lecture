@@ -279,3 +279,26 @@ finally хорошо подходит для очистки, например о
       const resultOfResult = await doSomethingWithResult(result);
       const hereWeGoAgain = await doSomethingElse(resultOfResult);
       ...
+
+#### Обработка ошибок
+Когда промис завершается успешно, await promise возвращает результат. Когда завершается с ошибкой – будет выброшено исключение. Как если бы на этом месте находилось выражение throw.
+
+    async function f() {
+      await Promise.reject(new Error("Oops!"));
+    }
+    // Делает то же самое:
+    async function f() {
+      throw new Error("Oops!");
+    }
+
+    // Такие ошибки можно ловить, используя try..catch, как с обычным throw:
+    async function f() {
+
+      try {
+        let response = await fetch('http://no-such-url');
+      } catch(err) {
+        alert(err); // TypeError: failed to fetch
+      }
+    }
+
+    f();
