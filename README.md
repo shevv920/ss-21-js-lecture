@@ -233,3 +233,49 @@
 Вызов .finally(f) похож на .then(f, f), в том смысле, что f выполнится в любом случае, когда промис завершится: успешно или с ошибкой. Но в методе `finally` нам недоступен результат
 
 finally хорошо подходит для очистки, например остановки индикатора загрузки, его ведь нужно остановить вне зависимости от результата.
+
+### async/await
+
+#### async
+
+- Специальный синтаксис для работы с промисами. Достаточно прост в использовании.
+- Ключевое слово `async` ставится перед функцией:
+
+      async function f() {
+        return 42;
+      }
+
+      const g = async () => 42;
+
+- У слова `async` один простой смысл: эта функция всегда возвращает промис. Значения других типов оборачиваются в завершившийся успешно промис автоматически.
+- Можно и явно вернуть промис:
+
+      const f = async () => 42;
+      const g = async () => Promise.resolve(42);
+
+#### await
+
+- Работает только внутри `async` функции
+- Ключевое слово await заставит интерпретатор JavaScript ждать до тех пор, пока промис справа от await не выполнится. После чего оно вернёт его результат, и выполнение кода продолжится.
+
+      const promise = myAsyncFunction();
+      const result = await promise;
+      // Или 
+      const res = await myAsyncFunction();
+
+- Обратите внимание, хотя await и заставляет JavaScript дожидаться выполнения промиса, это не отнимает ресурсов процессора. Пока промис не выполнится, JS-движок может заниматься другими задачами: выполнять прочие скрипты, обрабатывать события и т.п.
+
+- Сложночитаемый код можно переписать на более понятный:
+
+      doSomething((result) => {
+        domeSomethingWithResult(result, (resultOfResult) => {
+            doSomethingElse(resultOfResult, (hereWeGoAgain) => {
+                  // и так далее
+              });
+          });
+      });
+
+      const result = await doSomething();
+      const resultOfResult = await doSomethingWithResult(result);
+      const hereWeGoAgain = await doSomethingElse(resultOfResult);
+      ...
