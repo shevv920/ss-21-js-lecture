@@ -302,3 +302,23 @@ finally хорошо подходит для очистки, например о
     }
 
     f();
+
+#### Promise.all
+- Один из 5 статических методов в Promise
+
+- Допустим, нам нужно запустить множество промисов параллельно и дождаться, пока все они выполнятся.
+
+        const resultOfAll = Promise.all([task1, task2, task3, ...]);
+
+- Новый промис завершится, когда завершится весь переданный список промисов, и его результатом будет массив их результатов.
+
+        const urls = [
+            'http://wttr.in/minsk?format=j1',
+            'http://wttr.in/gomel?format=j1',
+            'http://wttr.in/pinsk?format=j1',
+        ];
+        const promises = urls.map((url) => fetch(url));
+        const results = await Promise.all(promises);
+        
+    В `results` будет массив результатов запросов.
+- Если любой из промисов завершится с ошибкой, то промис, возвращённый Promise.all, немедленно завершается с этой ошибкой.
