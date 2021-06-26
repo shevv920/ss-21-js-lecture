@@ -34,18 +34,19 @@
 - Есть восемь основных типов данных в JavaScript.
 
 Переменная в JavaScript может содержать любые данные. В один момент там может быть строка, а в другой – число:
-
-    let message = "hello"; // string
-    message = 123456; // number
-
+```Javascript
+  let message = "hello"; // string
+  message = 123456; // number
+```
 ### Числа
 - Числовой тип данных (number) представляет как целочисленные значения, так и числа с плавающей точкой.
 
 - Кроме обычных чисел, существуют так называемые «специальные числовые значения», которые относятся к этому типу данных: `Infinity`, `-Infinity` и `NaN`.
 
 - NaN означает вычислительную ошибку. Это результат неправильной или неопределённой математической операции, например:
-
-        const result = "два" * 2;
+```Javascript
+  const result = "два" * 2;
+```
 - Если где-то в математическом выражении есть NaN, то результатом вычислений с его участием будет NaN.
 **И это самый страшный результат математической операции (`не фатальная ошибка`, `не исключение`)**
 
@@ -54,17 +55,25 @@
 - Тип BigInt был добавлен в JavaScript, чтобы дать возможность работать с целыми числами произвольной длины.
 
 - Чтобы создать значение типа BigInt, необходимо добавить n в конец числового литерала:
-
-        const bigInt = 1234567890123456789012345678901234567890n;
-
+```Javascript
+    const bigInt = 1234567890123456789012345678901234567890n;
+```
 ### Строка
 
 - Строка (string) в JavaScript должна быть заключена в кавычки:
-
-        const str2 = 'привет';
-        const str = "двойные кавычки тоже вариант например когда надо в строке использовать одинарные It's like that";
-        const phrase = `Обратные кавычки позволяют встраивать переменные или выражения ${str} ${4084441 / (1011 + 1010)}`;
-
+  ```Javascript
+  const str2 = 'привет';
+  const str = "двойные кавычки тоже вариант например когда надо в строке использовать одинарные It's like that";
+  const phrase = `Обратные кавычки позволяют встраивать переменные или выражения ${str} ${4084441 / (1011 + 1010)}`;
+  ```
+- Когда в строке должны быть спец. символы, их можно экранировать используя обратный слэш `\`:
+    ```Javascript
+    const str = 'Can\'t just type ticks'; // Can't just type ticks
+    const str2 = 'Backslash \\'; // Backslash \
+    const iStr = `\`backticks\`` // `backticks`
+    const iStr2 = `\${not a variable or expression}`; // ${not a variable or expression}
+    const iStr3 = `\$\$\$_\$\$\$`; // $$$_$$$
+    ```
 ### Булевый (логический) тип
 
 - Булевый тип (boolean) может принимать только два значения: `true` (истина) и `false` (ложь).
@@ -77,9 +86,11 @@
 
 ### Значение «null»
 - Оно формирует отдельный тип, который содержит только значение null
-
-        const requestResult = null;
-
+  ```Javascript
+  const requestResult = null;
+  ```
+- Общепринятый способ явно указать на отсутствие значения
+  - Например поиск елемента в массиве вернет `null`
 ### Значение «undefined»
 
 - Специальное значение undefined также стоит особняком. Оно формирует тип из самого себя так же, как и null.
@@ -87,49 +98,46 @@
 - Оно означает, что «значение не было присвоено».
 
 - Если переменная объявлена, но ей не присвоено никакого значения, то её значением будет undefined:
-
-        let age; // здесь age имеет значение undefined
-
+  ```Javascript
+  let age; // здесь age имеет значение undefined
+  ```
 ### Обьект `object`
 
 - Объекты используются для хранения коллекций различных значений и более сложных сущностей. В JavaScript объекты используются очень часто, это одна из основ языка.
-
-
-
-
+```Javascript
+  const emptyObject = {};
+  const person = {
+    name: 'John',
+    age: 22,
+  };
+```
 
 ### Тип `symbol` (символ)
 - используется для создания уникальных идентификаторов в объектах.
 - Оператор typeof возвращает тип аргумента. Это полезно, когда мы хотим обрабатывать значения различных типов по-разному или просто хотим сделать проверку.
 
+
+### Оператор `typeof`
 У него есть две синтаксические формы:
 
 - Синтаксис оператора: typeof x.
 - Синтаксис функции: typeof(x).
 
 Вызов typeof x возвращает строку с именем типа:
-
-        typeof undefined // "undefined"
-
-        typeof 0 // "number"
-
-        typeof 10n // "bigint"
-
-        typeof true // "boolean"
-
-        typeof "foo" // "string"
-
-        typeof Symbol("id") // "symbol"
-
-        typeof Math // "object" - встроенный обьект
-
-        typeof null // "object" - ошибка в typeof
-
-        typeof alert 
-        /* 
-            "function" - Функции относятся к объектному типу. Но typeof обрабатывает их особым образом, возвращая "function". Так тоже повелось от создания JavaScript. Формально это неверно, но может быть удобным на практике.
-        */
-
+```Javascript
+typeof undefined // "undefined"
+typeof 0 // "number"
+typeof 10n // "bigint"
+typeof true // "boolean"
+typeof "foo" // "string"
+typeof Symbol("id") // "symbol"
+typeof Math // "object" - встроенный обьект
+typeof null // "object" - ошибка в typeof
+typeof alert 
+      /* 
+          "function" - Функции относятся к объектному типу. Но typeof обрабатывает их особым образом, возвращая "function". Так тоже повелось от создания JavaScript. Формально это неверно, но может быть удобным на практике.
+      */
+```
 
 # Преобразование типов
 
@@ -141,14 +149,19 @@
 
 ### Преобразование в строку 
 - Преобразование происходит очевидным образом. false становится "false", null становится "null" и т.п.
-
+- Есть не слишком очевидное преобразование:
+```JS
+const res = "5" + 5;
+console.log(res); // строка "55"
+```
+- `+` здесь это не арифмитический оператор, а оператор обьединения строк
 ### Преобразование в число
 - Численное преобразование
 Численное преобразование происходит в математических функциях и выражениях.
 Например, когда операция деления / применяется не к числу:
-
-        alert( "4" / "2" ); // 2, строки преобразуются в числа
-
+```Javascript
+console.log( "4" / "2" ); // 2, строки преобразуются в числа
+```
 Из `undefined` получим `NaN`
 
 Из `null` получим `0`
@@ -168,31 +181,33 @@
 # Promise, callback, async/await
 
 - Порядок выполнения асинхронных операций сложно определить:
+```Javascript
+  fs.rename('/tmp/hello', '/tmp/world', (err) => {
+      console.log('renamed complete');
+  });
 
-        fs.rename('/tmp/hello', '/tmp/world', (err) => {
-            console.log('renamed complete');
-        });
-
-        fs.stat('/tmp/world', (err, stats) => {
-            console.log(`stats: ${JSON.stringify(stats)}`);
-        });
+  fs.stat('/tmp/world', (err, stats) => {
+      console.log(`stats: ${JSON.stringify(stats)}`);
+  });
+```
 - Для этого нужно использовать вложенные колбэки:
-
-        fs.rename('/tmp/hello', '/tmp/world', (err) => { // 1
-            fs.stat('/tmp/world', (err, stats) => { // 2 
-                console.log(`stats: ${JSON.stringify(stats)}`);
-            });
-        });
+```Javascript
+  fs.rename('/tmp/hello', '/tmp/world', (err) => { // 1
+      fs.stat('/tmp/world', (err, stats) => { // 2 
+          console.log(`stats: ${JSON.stringify(stats)}`);
+      });
+  });
+```
 - Что приводит к сложночитаемому коду:
-
-        doSomething((result) => {
-            domeSomethingWithResult(result, (resultOfResult) => {
-                doSomethingElse(resultOfResult, (hereWeGoAgain) => {
-                    // и так далее
-                })
-            })
-        })
-
+```Javascript
+  doSomething((result) => {
+      domeSomethingWithResult(result, (resultOfResult) => {
+          doSomethingElse(resultOfResult, (hereWeGoAgain) => {
+              // и так далее
+          })
+      })
+  })
+```
 ### Promise
 - Промис это представитель для значение, которое может еще не быть вычислено на момент создания промиса. Промис позволяет назначить обработчики (колбэки) для результа или ошибки асинхронного действия.
 Что позволяет асинхронным действиям вернуть значение сразу, но вместо готового значения, возвращается промис который предоставит значение в какой-то момент в будущем.
@@ -202,37 +217,41 @@
 - `pending`: начальное значение на момент создания.
 - `fulfilled`: успешное вычисление.
 - `rejected`: неуспешное вычисление.
+```Javascript
+  const flipExecutor = (resolve, reject) => {
+    const random = Math.random();
+    if (random === 0) {
+        reject('Fail');
+    } else if (random > 0.5 ) {
+        resolve(true); 
+    } else {
+        resolve(false);
+    }
+  };
 
-        const coinFlip = new Promise((resolve, reject) => {
-            const random = Math.random();
-            if (random === 0) {
-                reject('Fail');
-            } else if (random > 0.5 ) {
-                resolve(true); 
-            } else {
-                resolve(false);
-            }
-        });
-- Исполнитель должен вызвать что-то одно: resolve или reject. Состояние промиса может быть изменено только один раз.
+  const coinFlip = new Promise(flipExecutor);
+```
+- Исполнитель (`flipExectutor`) должен вызвать что-то одно: resolve или reject.
+Состояние промиса может быть изменено только один раз.
 Все последующие вызовы resolve и reject будут проигнорированы
-
+- Выкинутые исключения во время выполнения функции передаваемой в конструктор промиса, попадут выше, **не в промис**. 
 #### Как использовать промисы:
 - метод `then`
-
-        coinFlip.then(
-                (result) => console.log(result ? "Больше" ? "Меньше"),
-                (error) => console.log('На ребро?!'),
-            )
-
+```Javascript
+  coinFlip.then(
+          (result) => console.log(result ? "Больше" ? "Меньше"),
+          (error) => console.log('На ребро?!'),
+        )
+```
 - метод `catch`
 
 Если мы хотели бы только обработать ошибку, то можно использовать null в качестве первого аргумента: .then(null, errorHandlingFunction). Или можно воспользоваться методом .catch(errorHandlingFunction), который сделает тоже самое    
 
 - метод `finally`
 
-Вызов .finally(f) похож на .then(f, f), в том смысле, что f выполнится в любом случае, когда промис завершится: успешно или с ошибкой. Но в методе `finally` нам недоступен результат
+Вызов `.finally(f)` похож на `.then(f, f)`, в том смысле, что f выполнится в любом случае, когда промис завершится: успешно или с ошибкой. Но в методе `finally` нам недоступен результат
 
-finally хорошо подходит для очистки, например остановки индикатора загрузки, его ведь нужно остановить вне зависимости от результата.
+`finally` хорошо подходит для очистки, например остановки индикатора загрузки, его ведь нужно остановить вне зависимости от результата.
 
 ### async/await
 
@@ -240,119 +259,349 @@ finally хорошо подходит для очистки, например о
 
 - Специальный синтаксис для работы с промисами. Достаточно прост в использовании.
 - Ключевое слово `async` ставится перед функцией:
-
-      async function f() {
-        return 42;
-      }
-
-      const g = async () => 42;
-
+```Javascript
+  async function f() {
+    return 42;
+  }
+  const g = async () => 42;
+```
 - У слова `async` один простой смысл: эта функция всегда возвращает промис. Значения других типов оборачиваются в завершившийся успешно промис автоматически.
+- Если `async` функция кидает исключение, возвращается промис со статусом `rejected`
+```Javascript
+  const err = async () => throw Error(322);
+  err.catch(err => console.log(err)); // 322
+```
 - Можно и явно вернуть промис:
-
-      const f = async () => 42;
-      const g = async () => Promise.resolve(42);
-
+```Javascript
+  const f = async () => 42;
+  const g = async () => Promise.resolve(42);
+```
 #### await
 
 - Работает только внутри `async` функции
 - Ключевое слово await заставит интерпретатор JavaScript ждать до тех пор, пока промис справа от await не выполнится. После чего оно вернёт его результат, и выполнение кода продолжится.
-
-      const promise = myAsyncFunction();
-      const result = await promise;
-      // Или 
-      const res = await myAsyncFunction();
-
+```Javascript
+  const promise = myAsyncFunction();
+  const result = await promise;
+  // Или 
+  const res = await myAsyncFunction();
+```
 - Обратите внимание, хотя await и заставляет JavaScript дожидаться выполнения промиса, это не отнимает ресурсов процессора. Пока промис не выполнится, JS-движок может заниматься другими задачами: выполнять прочие скрипты, обрабатывать события и т.п.
 
 - Сложночитаемый код можно переписать на более понятный:
-
-      doSomething((result) => {
-        domeSomethingWithResult(result, (resultOfResult) => {
-            doSomethingElse(resultOfResult, (hereWeGoAgain) => {
-                  // и так далее
-              });
+```Javascript
+  doSomething((result) => {
+    domeSomethingWithResult(result, (resultOfResult) => {
+        doSomethingElse(resultOfResult, (hereWeGoAgain) => {
+              // и так далее
           });
       });
+  });
 
-      const result = await doSomething();
-      const resultOfResult = await doSomethingWithResult(result);
-      const hereWeGoAgain = await doSomethingElse(resultOfResult);
-      ...
-
+  const result = await doSomething();
+  const resultOfResult = await doSomethingWithResult(result);
+  const hereWeGoAgain = await doSomethingElse(resultOfResult);
+  ...
+```
 #### Обработка ошибок
 Когда промис завершается успешно, await promise возвращает результат. Когда завершается с ошибкой – будет выброшено исключение. Как если бы на этом месте находилось выражение throw.
+```Javascript
+  async function f() {
+    await Promise.reject(new Error("Oops!"));
+  }
+  // Делает то же самое:
+  async function f() {
+    throw new Error("Oops!");
+  }
 
-    async function f() {
-      await Promise.reject(new Error("Oops!"));
+  // Такие ошибки можно ловить, используя try..catch, как с обычным throw:
+  async function f() {
+
+    try {
+      let response = await fetch('http://no-such-url');
+    } catch(err) {
+      alert(err); // TypeError: failed to fetch
     }
-    // Делает то же самое:
-    async function f() {
-      throw new Error("Oops!");
-    }
+  }
 
-    // Такие ошибки можно ловить, используя try..catch, как с обычным throw:
-    async function f() {
-
-      try {
-        let response = await fetch('http://no-such-url');
-      } catch(err) {
-        alert(err); // TypeError: failed to fetch
-      }
-    }
-
-    f();
-
+  f();
+```
 #### Promise.all
 - Один из 5 статических методов в Promise
 
 - Допустим, нам нужно запустить множество промисов параллельно и дождаться, пока все они выполнятся.
-
-        const resultOfAll = Promise.all([task1, task2, task3, ...]);
-
+```Javascript
+  const resultOfAll = Promise.all([task1, task2, task3, ...]);
+```
 - Новый промис завершится, когда завершится весь переданный список промисов, и его результатом будет массив их результатов.
-
-        const urls = [
-            'http://wttr.in/minsk?format=j1',
-            'http://wttr.in/gomel?format=j1',
-            'http://wttr.in/pinsk?format=j1',
-        ];
-        const promises = urls.map((url) => fetch(url));
-        const results = await Promise.all(promises);
-        
-    В `results` будет массив результатов запросов.
+```Javascript
+  const urls = [
+      'http://wttr.in/minsk?format=j1',
+      'http://wttr.in/gomel?format=j1',
+      'http://wttr.in/pinsk?format=j1',
+  ];
+  const promises = urls.map((url) => fetch(url));
+  const results = await Promise.all(promises);
+```
+В `results` будет массив результатов запросов.
 - Если любой из промисов завершится с ошибкой, то промис, возвращённый Promise.all, немедленно завершается с этой ошибкой.
-
-
+- Если необходимо получить все результаты (и ошибки, и успешные) существует метод `allSettled`:
+  - `Promise.allSettled(promises)` возвращает массив объектов, каждый из которых описывает результат промиса
+```Javascript
+  const urls = [
+        'http://wttr.in/minsk?format=j1',
+        'hello there',
+        'http://wttr.in/pinsk?format=j1',
+    ];
+  const results = await promise.allSettled(promises);
+  console.log(results[0].status); // fulfilled
+  console.log(results[1].status); // rejected
+  console.log(results[2].status); // fulfilled
+```
 ### Closure
 - Мы знаем, что функция может получить доступ к переменным из внешнего окружения, эта возможность используется очень часто.
 
 - Но что произойдёт, когда внешние переменные изменятся? Функция получит последнее значение или то, которое существовало на момент создания функции?
 
 - И что произойдёт, когда функция переместится в другое место в коде и будет вызвана оттуда – получит ли она доступ к внешним переменным своего нового местоположения?
+```Javascript
+  function main() {
+    let name = "John";
+    function sayHi() {
+      console.log("Hi, " + name);
+    }
+    name = "Pete";
+    sayHi();
+  }
 
-      function main() {
-        let name = "John";
-        function sayHi() {
-          console.log("Hi, " + name);
-        }
-        name = "Pete";
-        sayHi();
-      }
+  main();
 
-      main();
+  function main2() {
+    function makeWorker() {
+      let name = "Pete";
+      return function() {
+        console.log(name);
+      };
+    }
+    let name = "John";
+    
+    let worker = makeWorker();
+    worker();
+  }
 
-      function main2() {
-        function makeWorker() {
-          let name = "Pete";
-          return function() {
-            console.log(name);
-          };
-        }
-        let name = "John";
-        
-        let worker = makeWorker();
-        worker();
-      }
+  main2();
+```
+### `this`
+- Свойство контекста выполнения кода (global, function или eval), которое в нестрогом режиме всегда является ссылкой на объект, а в строгом режиме может иметь любое значение.
 
-      main2();
+#### Global context
+- В глобальном контексте выполнения (за пределами каких-либо функций) this ссылается на глобальный объект вне зависимости от режима (строгий или нестрогий).
+  - В браузерах `this == window`
+
+#### Function контекст
+
+- В пределах функции значение this зависит от того, каким образом вызвана функция.
+
+### Простой вызов
+
+- Поскольку следующий код не в строгом режиме, и значение this не устанавливается вызовом, по умолчанию будет использоваться объект global, которым в браузере является window.
+```Javascript
+  function f1(){
+    return this;
+  }
+
+  // В браузере:
+  f1() === window; // window - глобальный объект в браузере
+
+  // В Node:
+  f1() === global; // global - глобальный объект в Node
+```
+- В строгом режиме, если значение this не установлено в контексте выполнения, оно остаётся undefined, как показано в следующем примере:
+```Javascript
+  function f2(){
+    "use strict"; // см. strict mode
+    return this;
+  }
+
+  f2() === undefined; // true
+```
+- Для того, чтобы при вызове функции установить `this` в определённое значение, используйте `call()` или `apply()`
+
+- ECMAScript 5 представил `Function.prototype.bind()`. Вызов `f.bind(someObject)` создаёт новую функцию с тем же телом и областью действия, что и `f`, но там, где в исходной функции используется `this`, в новой функции оно постоянно будет связано с первым аргументом `bind`, независимо от того, как функция используется.
+  - В классовых компонентах `React` это один из способов избежать проблем
+
+### Стрелочные функции
+
+- В стрелочных функциях, `this` привязан к окружению, в котором была создана функция. В глобальной области видимости `this` будет указывать на глобальный объект.
+
+### В конструкторе
+
+- Когда функция используется как конструктор (с ключевым словом new ), this связано с создаваемым новым объектом.
+
+# Event loop
+ - Поток выполнения в браузере, равно как и в Node.js, основан на событийном цикле.
+ - Понимание работы событийного цикла важно для оптимизаций, иногда для правильной архитектуры.
+ - Идея событийного цикла очень проста. Есть бесконечный цикл, в котором движок JavaScript ожидает задачи, исполняет их и снова ожидает появления новых.
+
+## Stack
+- Основное выполнения скрипта
+- Задачи из стэка могут добавлять в стэк, или в одну очередей задач
+### Макрозадачи
+ - Задачи поступают на выполнение – движок выполняет их – затем ожидает новые задачи (во время ожидания практически не нагружая процессор компьютера)
+Может так случиться, что задача поступает, когда движок занят чем-то другим, тогда она ставится в очередь.
+    - Рендеринг (отрисовка страницы) никогда не происходит во время выполнения задачи движком. Не имеет значения, сколь долго выполняется задача. Изменения в DOM отрисовываются только после того, как задача выполнена.
+    - Если задача выполняется очень долго, то браузер не может выполнять другие задачи, обрабатывать пользовательские события, поэтому спустя некоторое время браузер предлагает «убить» долго выполняющуюся задачу. Такое возможно, когда в скрипте много сложных вычислений или ошибка, ведущая к бесконечному циклу.
+
+## Макрозадачи и Микрозадачи
+- Помимо макрозадач, описанных в этой части, существуют микрозадачи
+- Микрозадачи приходят только из кода. Обычно они создаются промисами: выполнение обработчика .then/catch/finally становится микрозадачей. Микрозадачи также используются «под капотом» await, т.к. это форма обработки промиса.
+- **Сразу после каждой макрозадачи движок исполняет все задачи из очереди микрозадач перед тем, как выполнить следующую макрозадачу или отобразить изменения на странице, или сделать что-то ещё.**
+
+
+
+# Методы массива и объекта
+  - Массивы предоставляют множество методов:
+    - Добавление, удаление, замена, сортировка, фильтрация и прочие (push, pop, shift, unshift и др.)
+  - `splice`: метод для удаления или замены элементов массива `splice(start, deleteCount, item1, item2, itemN)`. `start` может быть отрицательным, тогда отсчет будет с конца массива
+  - `slice([start], [end])`. Он возвращает новый массив, в который копирует элементы, начиная с индекса start и до end (не включая end). Без аргументов копирует массив.
+  - `concat(arg1, arg2, arg3, ...)` создаёт новый массив, в который копирует данные из других массивов и дополнительные значения. Он принимает любое количество аргументов, которые могут быть как массивами, так и простыми значениями.
+  - `forEach` позволяет выполнить функцию для каждого элемента массива.
+      ```Javascript
+      arr.forEach((item, index, array) => {
+        // console.log(item, index)
+      });
+      ```
+  - `indexOf(item, from)` ищет `item`, начиная с индекса `from`, и возвращает индекс, на котором был найден искомый элемент, в противном случае -1.
+  - `lastIndexOf(item, from)` – то же самое, но ищет справа налево.
+  - `arr.includes(item, from)` – ищет item, начиная с индекса from, и возвращает true, если поиск успешен.
+    - Обратите внимание, что методы используют строгое сравнение ===. Таким образом, если мы ищем false, он находит именно false, а не ноль.
+  - `find` вернет обьект по заданным условиям или `null`
+```Javascript
+  const arr = [1, 3, 5, 6];
+  const res = arr.find((item) => {
+    return item % 2 === 0;
+  });
+  console.log(res); // 6
+```
+  - `filter` - возвращает новый массив состоящий из элементов подходящих по заданному условию
+```Javascript
+arr.filter((item, index, array) => {
+    return item % 2 !== 0;
+  }); // [1, 3, 5]
+```
+  - `map` вызывает функцию для каждого элемента массива и возвращает массив результатов выполнения этой функции.
+```Javascript
+  arr.map((item, index, arr) => {
+    return `${item-index}`;
+  }); // [ '1-0', '3-1', '5-2', '6-3' ]
+```
+  - `sort` - сортирует массив, меняя порядок элементов по заданным условиям или по-умолчанию элементы будут отсортированы как `строки` в лексикографическом порядке `"2" > "15".`
+  Что бы задать свой порядок сортировки, надо передать функцию которая принимает два элемента и возвращает число:
+```Javascript
+function compare(a, b) {
+  if (a > b) return 1; // если первое значение больше второго
+  if (a == b) return 0; // если равны
+  if (a < b) return -1; // если первое значение меньше второго
+}
+```
+На самом деле функция может вернуть любое число:
+```Javascript
+function compare(a, b) {
+  if (a > b) return 999; // любое положительное
+  if (a == b) return 0; // ноль есть ноль
+  if (a < b) return -1337; // любое отрицательное
+}
+```
+  - `reverse` - меняет порядок элементов на обратный
+  - `join` - создает строку из элементов, добавляю переданную строку между ними
+  - `reduce` - используtтся для вычисления какого-нибудь единого значения на основе всего массива.
+```Javascript
+reduce((previousValue, item, index, array) => {
+  // ...
+}, [initial]);
+const arr = ['hello', 'there'];
+const lengthSum = arr.reduce((prev, current) => prev + current.length, 0); // 0 - начальное значение
+console.log(lengthSum); // 10
+const oops = arr.reduce((prev, current) => prev + current.length);
+console.log(oops); // hello5
+```
+  - `Array.isArray` - возвращает `true`, если объект является массивом и `false`, если он массивом не является.
+  
+## Методы объектов
+  - Для простых объектов доступны следующие методы:
+    - `Object.keys(obj)` – возвращает массив ключей.
+    - `Object.values(obj) `– возвращает массив значений.
+    - `Object.entries(obj)` – возвращает массив пар [ключ, значение].
+  - Обычно указанных методов достаточно для трансофрмации объекта
+
+
+
+
+
+# Document Object Model (DOM)
+- Основой HTML-документа являются теги.
+
+В соответствии с объектной моделью документа («Document Object Model», коротко DOM), каждый HTML-тег является объектом. Вложенные теги являются «детьми» родительского элемента. Текст, который находится внутри тега, также является объектом.
+
+Все эти объекты доступны при помощи JavaScript, мы можем использовать их для изменения страницы.
+
+- DOM – это представление HTML-документа в виде дерева тегов.
+- Все, что есть в HTML, даже комментарии, является частью DOM.
+- В браузерном окружении `document` - "входная точка в DOM", для javascript это доступный глобально объект.
+
+- Скрипт может быть выполнен когда еще не весь DOM доступен:
+```HTML 
+<html>
+
+<head>
+  <script>
+    alert( "Из HEAD: " + document.body ); // null, <body> ещё нет
+  </script>
+</head>
+
+<body>
+
+</body>
+</html>
+```
+  - Манипуляции с DOM из javascript:
+    - Получение элемента c `id` root:
+
+  ```HTML
+  <html>
+    <head></head>
+    <body>
+      <div id="root"> 
+        <div class="child">
+          first child
+        </div>
+        <div class="child">
+          second child
+        </div>
+      </div>
+    </body>
+</html>
+  ```
+
+  ```Javascript
+    const rootElement = document.querySelector('#root'); // вернет null если елемент не был найден
+    const childElements = document.querySelectorAll('.child'); // вернет NodeList элементов с классом child
+
+  ```
+  - NodeList объекты это коллекции обычно возвращаемые свойствами и методами DOM объектов
+  - NodeList это **НЕ** массив, но по нему можно итерироваться методом `forEach`
+  - NodeList можно превратить в массив методом `Array.from()` или деструктурировать `const arr = [...nodeList], для более удобной работы с коллекцией элементов
+
+### Как обработчик событий DOM
+
+- Когда функция используется как обработчик событий, `this` присваивается элементу с которого начинается событие (некоторые браузеры не следуют этому соглашению для обработчиков, добавленных динамически с помощью всех методов, кроме `addEventListener`).
+```Javascript
+  const element = document.querySelector('#root');
+
+  function handler(event) {
+    console.log(this.id);
+  }
+
+  element.addEventListener('click', handler);
+  element.click(); // в консоли будет напечатано '#root'
+```    
