@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./index.js">
+  </script>
+</head>
+<style>
+  :root {
+    box-sizing: border-box;
+  }
+
+  .root {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .controls {
+    width: 30vw;
+    height: calc(100vh - 150px);
+    background-color: #f2f2f2;
+    border: 2px dotted black;
+  }
+
+  .queue {
+    height: 60%;
+    width: 100%;
+    background-color: #fff;
+  }
+
+  .visuals {
+    margin: 0 0 0 10px;
+    height: 90vh;
+    width: 100%;
+    background-color: #f4f4f4;
+    border: 2px dotted gray;
+  }
+
+  .stack,
+  .microQueue,
+  .apiQueue,
+  .renderQueue {
+    width: 15vw;
+    border: 1px solid red;
+  }
+
+  .queues {
+    display: flex;
+    justify-content: space-between;
+    height: 80%;
+  }
+
+  .actor {
+    margin-top: 50px;
+    display: flex;
+    height: 3%;
+    width: 15vw;
+    color: #fff;
+    background-color: #000;
+    place-content: center;
+    transition: 1s linear;
+  }
+
+</style>
+
+<body>
+  <div class="root">
+    <div class="controls">
+      <div class="queue">
+
+      </div>
+      <button id="startBtn" type="button">Start</button>
+    </div>
+
+    <div class="visuals">
+      <div class="queues">
+        <div class="stack">
+          stack
+        </div>
+        <div class="microQueue">
+          micro
+        </div>
+        <div class="apiQueue">
+          api
+        </div>
+        <div class="renderQueue">
+          render
+        </div>
+      </div>
+      <div class="actor">
+        current
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
