@@ -567,6 +567,7 @@ coinFlip.catch((err) => console.log(err.message));
 
 - Работает только внутри `async` функции
 - Ключевое слово await заставит интерпретатор JavaScript ждать до тех пор, пока промис справа от await не выполнится. После чего оно вернёт его результат, и выполнение кода продолжится.
+
 ```Javascript
   const promise = myAsyncFunction();
   const result = await promise;
@@ -578,6 +579,7 @@ coinFlip.catch((err) => console.log(err.message));
 ---
 - Сложночитаемый код можно переписать на более понятный:
 
+
 ```JS
 doSomething((result) => {
   domeSomethingWithResult(result, (resultOfResult) => {
@@ -586,7 +588,13 @@ doSomething((result) => {
         });
     });
 });
-
+```
+---
+![meme](https://www.meme-arsenal.com/memes/426a6126bdaa7d0cb899fb6ad4be249d.jpg)
+---
+![meme](http://memesmix.net/media/created/ordn8p.jpg)
+---
+```JS
 const result = await doSomething();
 const resultOfResult = await doSomethingWithResult(result);
 const hereWeGoAgain = await doSomethingElse(resultOfResult);
