@@ -937,7 +937,7 @@ _.partition([1, 2, 3, 4], n => n % 2);
   - в случае неверных аргументов возвращает строку с описанием ошибки
 ---
 - Написать на JS маленькую библиотеку для показа `toast`-подобных нотификаций:
-[screenshot](https://user-images.githubusercontent.com/442126/124349857-1117a000-dbfa-11eb-9b81-bd11d2d6b189.png)
+![screenshot](https://user-images.githubusercontent.com/442126/124349857-1117a000-dbfa-11eb-9b81-bd11d2d6b189.png)
 #### Toast notifications
 - Сообщения выводятся в верхнем правом углу экрана друг под другом.
 - Сообщения бывают 4 типов: error, warning, success, info.
