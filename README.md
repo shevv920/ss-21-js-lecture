@@ -897,7 +897,7 @@ const childElements = document.querySelectorAll('.child');
 - **Сразу после каждой макрозадачи движок исполняет все задачи из очереди микрозадач перед тем, как выполнить следующую макрозадачу или отобразить изменения на странице, или сделать что-то ещё.**
 ---
 ![Scheme](https://hsto.org/webt/l0/z9/q2/l0z9q2s-zdltplomxlim269pu7k.png)
-
+[loupe](http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D)
 ---
 #### Lodash
 - Библиотека для упрощения работы с данными в js
@@ -923,3 +923,23 @@ _.partition([1, 2, 3, 4], n => n % 2);
 - Для трансформации JSX в обычный JavaScript
 
 ---
+#### Задания
+- [Sum of two lowest positive integers](https://www.codewars.com/kata/558fc85d8fd1938afb000014)
+- [Partition On](https://www.codewars.com/kata/525a037c82bf42b9f800029b)
+- [Function Composition](https://www.codewars.com/kata/5421c6a2dda52688f6000af8)
+
+- Написать функцию которая принимает любое число и возвращает число в формате ХХ.ХХ, согласно правилам математики
+- Написать функцию которая принимает 3 аргумента: число1, оператор, число2
+  - применяет оператор к числу1 с аргументом число2
+  - возвращает результат, например `calc(2, '*', 2) // 4` 
+  - не кидает исключения
+  - не возвращает NaN
+  - в случае неверных аргументов возвращает строку с описанием ошибки
+---
+- Написать на JS маленькую библиотеку для показа `toast`-подобных нотификаций:
+[screenshot](https://user-images.githubusercontent.com/442126/124349857-1117a000-dbfa-11eb-9b81-bd11d2d6b189.png)
+#### Toast notifications
+- Сообщения выводятся в верхнем правом углу экрана друг под другом.
+- Сообщения бывают 4 типов: error, warning, success, info.
+- Каждое сообщение должно содержать текст, иконку и кнопку закрытия.
+- Если сообщение не было закрыто пользователем, то оно должно автоматически пропасть через заданный при создании промежуток времени (промежуток по умолчанию – 5 сек).
