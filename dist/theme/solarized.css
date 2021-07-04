@@ -224,6 +224,7 @@ html * {
   font-family: var(--r-code-font);
   text-transform: none;
   tab-size: 2;
+  color: #cc7832;
 }
 
 .reveal pre code {
