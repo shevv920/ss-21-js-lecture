@@ -871,12 +871,46 @@ const childElements = document.querySelectorAll('.child');
 - NodeList можно превратить в массив методом `Array.from()` или деструктурировать `const arr = [...nodeList]`, для более удобной работы с коллекцией элементов
 ---
 Вот методы для различных вариантов вставки:
-- node.append(...nodes or strings) – добавляет узлы или строки в конец node,
-- node.prepend(...nodes or strings) – вставляет узлы или строки в начало node,
-- node.before(...nodes or strings) –- вставляет узлы или строки до node,
-- node.after(...nodes or strings) –- вставляет узлы или строки после node,
-- node.replaceWith(...nodes or strings) –- заменяет node заданными узлами или строками.
+- `node.append(...nodes or strings)` – добавляет узлы или строки в конец node,
+- `node.prepend(...nodes or strings)` – вставляет узлы или строки в начало node,
+---
+- `node.before(...nodes or strings)` –- вставляет узлы или строки до node,
+- `node.after(...nodes or strings)` –- вставляет узлы или строки после node,
+- `node.replaceWith(...nodes or strings)` –- заменяет node заданными узлами или строками.
+---
+![Dom navigation](https://user-images.githubusercontent.com/442126/124400438-10325b80-dd2b-11eb-996c-ac94a12fcf47.png)
+---
+ - Все методы "`getElementsBy*`" возвращают живую коллекцию. 
+ - Такие коллекции всегда отражают текущее состояние документа и автоматически обновляются при его изменении.
+---
+```JS
+<div>First div</div>
 
+<script>
+  const divs = document.getElementsByTagName('div');
+  alert(divs.length); // 1
+</script>
+
+<div>Second div</div>
+
+<script>
+  alert(divs.length); // 2
+</script>
+```
+---
+ - Напротив, querySelectorAll возвращает статическую коллекцию. Это похоже на фиксированный массив элементов.
+
+ ```JS
+<div>First div</div>
+<script>
+  let divs = document.querySelectorAll('div');
+  alert(divs.length); // 1
+</script>
+<div>Second div</div>
+<script>
+  alert(divs.length); // 1
+</script>
+```
 ---
 ##### Функция как обработчик событий DOM
 
@@ -941,7 +975,34 @@ _.partition([1, 2, 3, 4], n => n % 2);
 #### Babel 
 - Babel это набор инструментов для конвертации современно JavaScript (ECMAScript2015+) кода в обратно совместимую версию.
 - Для трансформации JSX в обычный JavaScript
+- Для использования возможностей ES которые еще не поддерживаются всеми браузерами
+---
+- `||=`
 
+```JS
+const a = { duration: 50, title: '' };
+a.duration ||= 10;
+a.title ||= 'hello there';
+console.log(a.duration); // 50
+console.log(a.title);
+```
+---
+- Разделитель в числах:
+
+```JS
+const trillion = 1_000_000_000_000;
+```
+---
+- Частичное применение функции
+
+```JS
+function add(x, y) { return x + y; }
+
+const addOne = add(1, ?); // apply from the left
+addOne(2); // 3
+```
+---
+- Добавочки от менторов?
 ---
 </textarea>
       </section>
