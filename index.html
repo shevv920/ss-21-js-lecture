@@ -880,6 +880,21 @@ const childElements = document.querySelectorAll('.child');
 ---
 ![Dom navigation](https://user-images.githubusercontent.com/442126/124400438-10325b80-dd2b-11eb-996c-ac94a12fcf47.png)
 ---
+- `Node` это наиболее общее, абстрактное название объекта из иерархии DOM.
+- `Element` это более конкретный случай `Node`
+- `document` это **не** `Element`
+- `body` это `Element`
+---
+- `Element` имеет методы и свойства необходиме всем объектам DOM представляющих элементы.
+  - `Element.attributes`
+  - `Element.children`
+  - `Element.classList` - объект со своими методами и свойствами
+    - `contains`
+    - `add / remove`
+    - `toggle`
+  - `Element.className` - строка
+  - ...
+---
  - Все методы "`getElementsBy*`" возвращают живую коллекцию. 
  - Такие коллекции всегда отражают текущее состояние документа и автоматически обновляются при его изменении.
 ---
